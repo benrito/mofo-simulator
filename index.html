@@ -1,0 +1,191 @@
+<html>
+  <head>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        text-align: center;
+      }
+      img {
+        height: 250px;
+        opacity: 0.5;
+      }
+      img.hl {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <img src="logo.png" class="hl">
+    </p>
+    <p>
+      <img id="i1" src="oijwef">
+      <img id="i2" src="oijwef">
+      <img id="i3" src="oijwef">
+    </p>
+    <p>
+      <audio id="a1"></audio>
+      <audio id="a2"></audio>
+      <audio id="a3"></audio>
+      <audio id="spinsound" src="gamemachine01.mp3"></audio>
+    </p>
+    <p><button id="spin">SPIN!</button><button id="play">PLAY!</button></p>
+  <script>
+    var chris = [
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/1/hiveneeds.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/1/hives.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/1/landascape.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/1/makingislearning.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/1/makingisso.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/1/megamentors.ogg'],
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/2/aggregate.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/2/badge.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/2/cultivate.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/2/hedgehog.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/2/hunt.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/2/integrate.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/2/snaptogether.ogg'],
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/3/everyonegetsabadge.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/3/growtheecosystem.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/3/hyperglobal.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/3/justblogit.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/3/sharingiscaring.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/chrislarry/3/unsatisfieddi.ogg']
+    ];
+
+    var geoff = [
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/1/123pitch.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/1/components.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/1/needs%20a%20program%20arc%20to.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/1/whosgonna.ogg'],
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/bigtent.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/buildengagement.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/catalyze.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/changenarrative.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/check.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/echochamber.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/findpartners.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/remixprogram.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/2/seedpitch.ogg'],
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/advanceconvo.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/boughtin.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/co-creation.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/coownership.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/emotionalbond.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/everyoneinroom.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/journey.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/justprocess.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/noonewillread.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/protectjob.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/testclosed.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/geoff/3/trigger.ogg']
+    ];
+
+    var mark = [
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/1/buildamovement.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/1/buildgenereation.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/1/galvanize%20mentors.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/1/montage.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/1/mozfestforcing.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/1/mozillais.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/1/tellboardmetrics.ogg'],
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/2/bakevalues.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/2/createawesomestuff.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/2/hacktheweb.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/2/internetcinema.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/2/rocktheworld.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/2/shipmindblowing.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/2/transformuniverse.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/2/workliketheweb.ogg'],
+      ['https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/3/atul.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/3/fuckitshipit.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/3/fullystandards.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/3/keepitmoving.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/3/mfbt.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/3/shitshow.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/3/shitshow2.ogg',
+      'https://videos.cdn.mozilla.net/uploads/webmademovies/mofosimulator/surman/3/thenlocalize.ogg']
+    ];
+
+
+    var soundbank = [chris, geoff, mark];
+    var colorSpinInterval;
+
+    var images = [
+      'http://content-2011.mozillafestival.org/uploads/2011/10/chrislarryny-best-145x145-copy.jpg',
+      'https://c1.staticflickr.com/3/2834/9697188965_fd531f30e0_z.jpg',
+      'https://c2.staticflickr.com/2/1329/559583334_75a054b1ae.jpg'
+    ];
+
+    function changeBgColor() {
+      var r = Math.floor(Math.random()*255);
+      var g = Math.floor(Math.random()*255);
+      var b = Math.floor(Math.random()*255);
+      var color = 'rgb(' + r + ',' + g + ',' + b + ')';
+      document.body.style.backgroundColor = color;
+    }
+
+    function pick () {
+      clearInterval(colorSpinInterval);
+      var randomBankIndex1 = Math.floor(Math.random()*soundbank.length);
+      var randomBankIndex2 = Math.floor(Math.random()*soundbank.length);
+      var randomBankIndex3 = Math.floor(Math.random()*soundbank.length);
+
+      var randomBank1 = soundbank[randomBankIndex1];
+      var randomBank2 = soundbank[randomBankIndex2];
+      var randomBank3 = soundbank[randomBankIndex3];
+
+      var randomSound1 = randomBank1[0][Math.floor(Math.random()*randomBank1[0].length)];
+      var randomSound2 = randomBank2[1][Math.floor(Math.random()*randomBank2[1].length)];
+      var randomSound3 = randomBank3[2][Math.floor(Math.random()*randomBank3[2].length)];
+
+      document.querySelector('#a1').src = randomSound1;
+      document.querySelector('#a2').src = randomSound2;
+      document.querySelector('#a3').src = randomSound3;
+
+      document.querySelector('#a2').onended = function () {
+        document.querySelector('#a3').play();
+        document.querySelector('#i2').className = '';
+        document.querySelector('#i3').className = 'hl';
+      };
+
+      document.querySelector('#a1').onended = function () {
+        document.querySelector('#a2').play();
+        document.querySelector('#i1').className = '';
+        document.querySelector('#i2').className = 'hl';
+      };
+
+      document.querySelector('#play').onclick = function () {
+        document.querySelector('#a1').play();
+        document.querySelector('#i1').className = 'hl';
+      };
+
+      document.querySelector('#i1').src = images[randomBankIndex1];
+      document.querySelector('#i2').src = images[randomBankIndex2];
+      document.querySelector('#i3').src = images[randomBankIndex3];
+
+    }
+
+    document.querySelector('#spin').onclick = function () {
+      document.querySelector('#i1').src = '';
+      document.querySelector('#i2').src = '';
+      document.querySelector('#i3').src = '';
+      document.querySelector('#i1').className = '';
+      document.querySelector('#i2').className = '';
+      document.querySelector('#i3').className = '';
+      colorSpinInterval = setInterval(changeBgColor, 150);
+      setTimeout(pick, 1000);
+      document.querySelector('#spinsound').currentTime = 0;
+      setTimeout(function () {
+        document.querySelector('#spinsound').play();
+      }, 50);
+    };
+
+  </script>
+  </body>
+
+</html>
